@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans Arabic", "Cairo", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100svh;
+    direction: rtl;
+    background-color: #f3ede4;
+    color: #1e293b;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+
+  ::selection {
+    background-color: rgb(191 106 51 / 18%);
+    color: #102933;
+  }
+}
