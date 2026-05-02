@@ -118,8 +118,8 @@ export default function Header() {
               <strong className="font-['Cairo'] text-xl font-black leading-none tracking-tight text-slate-900 lg:text-2xl">
                 القمة<span className="text-[#5a5c3b]">.</span>
               </strong>
-              <small className="mt-1.5 block max-w-[132px] text-[8px] leading-tight tracking-[0.22em] text-slate-400 uppercase sm:max-w-none sm:text-[9px] sm:tracking-[0.35em]">
-                Engineering Bureau
+              <small className="mt-1.5 block max-w-[132px] text-[8px] leading-tight tracking-normal text-slate-400 sm:max-w-none sm:text-[10px]">
+                للتصميم والاستشارات الهندسية
               </small>
             </span>
           </NavLink>

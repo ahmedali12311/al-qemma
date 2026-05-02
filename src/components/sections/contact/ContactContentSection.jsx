@@ -68,7 +68,7 @@ export default function ContactContentSection() {
                   {method.label}
                 </p>
                 <p
-                  className="text-slate-900 font-bold text-base leading-snug whitespace-nowrap transition-colors duration-300 group-hover:text-[#0e7490]"
+                  className="text-slate-900 font-bold text-sm md:text-base leading-snug transition-colors duration-300 group-hover:text-[#0e7490] max-w-full overflow-hidden"
                   dir={method.label === "الهاتف" || method.label === "البريد الإلكتروني" ? "ltr" : "rtl"}
                 >
                   {method.value}
@@ -97,7 +97,7 @@ export default function ContactContentSection() {
               <p className="text-slate-800 font-bold font-['Cairo'] text-sm">بنغازي — طريق النهر</p>
             </div>
           </div>
-          <p className="text-[11px] font-mono tracking-wider text-slate-300">
+          <p className="text-[11px] font-mono tracking-wider text-slate-500">
             شركة القمة للتصميم والاستشارات الهندسية
           </p>
         </div>
