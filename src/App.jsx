@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Preloader from "./components/Preloader";
 import Layout from "./components/Layout";
@@ -34,7 +34,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AnimatePresence mode="wait">
         {loading && <Preloader key="preloader" onComplete={() => setLoading(false)} />}
       </AnimatePresence>
@@ -48,6 +48,6 @@ export default function App() {
           <AppShell />
         </motion.div>
       )}
-    </HashRouter>
+    </BrowserRouter>
   );
 }

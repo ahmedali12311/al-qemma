@@ -30,7 +30,7 @@ export default function HomeContactSection() {
             className="absolute z-10 w-[100%] md:w-[120%]" 
           >
             <img 
-              src="public/images/helmet.png" 
+              src="/images/helmet.webp" 
               alt="Safety Helmet" 
               className="h-auto w-full object-contain drop-shadow-2xl" 
             />

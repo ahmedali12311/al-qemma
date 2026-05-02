@@ -9,4 +9,4 @@ RUN npm run build
 
 FROM pierrezemb/gostatic
 COPY --from=build /app/dist/ /srv/http/
-CMD ["-port", "8080", "-https-promote", "-log-level", "info"]
+CMD ["-port", "8080", "-https-promote", "-fallback", "index.html", "-log-level", "info"]
