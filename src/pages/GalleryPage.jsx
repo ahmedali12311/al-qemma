@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { containerClass } from "../lib/ui";
 import GalleryHeroSection from "../components/sections/gallery/GalleryHeroSection";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const layouts = [
   "md:col-span-2 md:row-span-2",
@@ -81,6 +82,10 @@ function SafeImage({ src, alt, className }) {
 }
 
 export default function GalleryPage() {
+  usePageMeta(
+    "معرض أعمال القمة | رؤية هندسية متكاملة",
+    "تصفح معرض أعمال ومشاريع شركة القمة، حيث تلتقي الهندسة المعمارية بالإبداع في كل تفصيلة."
+  );
   const [activeCategory, setActiveCategory] = useState("الكل");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(null);
