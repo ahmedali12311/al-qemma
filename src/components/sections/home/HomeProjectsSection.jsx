@@ -14,7 +14,7 @@ export default function HomeProjectsSection() {
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-[#0284c7]"
+            className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-[#5a5c3b]"
           >
             التميز المعماري
           </motion.span>
@@ -24,12 +24,12 @@ export default function HomeProjectsSection() {
             transition={{ delay: 0.1 }}
             className="font-['Cairo'] text-5xl font-black text-slate-900 md:text-6xl"
           >
-            مشاريع <span className="text-[#0284c7]">مختارة</span>
+            مشاريع <span className="text-[#5a5c3b]">مختارة</span>
           </motion.h2>
         </div>
 
-        {/* 3 Projects: Morphing Shape Layout */}
-        <div className="grid grid-cols-1 gap-24 lg:grid-cols-3">
+        {/* 2 Projects: Morphing Shape Layout */}
+        <div className="grid grid-cols-1 gap-24 lg:grid-cols-2 max-w-5xl mx-auto">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -37,7 +37,7 @@ export default function HomeProjectsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className={`group relative ${
-                index === 0 ? "lg:mt-0" : index === 1 ? "lg:mt-24" : "lg:mt-48"
+                index === 0 ? "lg:mt-0" : "lg:mt-32"
               }`}
             >
               <span className="absolute -right-6 -top-12 font-['Cairo'] text-9xl font-black text-slate-50 opacity-10">
@@ -46,7 +46,7 @@ export default function HomeProjectsSection() {
 
               {/* Morphing Image Container */}
               <motion.div 
-                className="relative aspect-[3/4] overflow-hidden bg-slate-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] transition-shadow duration-700 group-hover:shadow-[0_40px_80px_-15px_rgba(2, 132, 199,0.15)]"
+                className="relative aspect-[3/4] overflow-hidden bg-slate-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] transition-shadow duration-700 group-hover:shadow-[0_40px_80px_-15px_rgba(90, 92, 59,0.15)]"
                 // هنا السحر: تغيير الـ Border Radius بشكل مستمر وانسيابي
                 animate={{
                   borderRadius: [
@@ -79,7 +79,7 @@ export default function HomeProjectsSection() {
 
               {/* Content */}
               <div className="mt-10 text-right">
-                <h3 className="font-['Cairo'] text-2xl font-black text-slate-800 transition-colors group-hover:text-[#0284c7]">
+                <h3 className="font-['Cairo'] text-2xl font-black text-slate-800 transition-colors group-hover:text-[#5a5c3b]">
                   {project.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-500">

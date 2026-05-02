@@ -17,12 +17,12 @@ export default function ContactHeroSection() {
       <div className={`${containerClass} relative z-10 grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] items-center gap-12 md:gap-16`}>
 
         {/* 1. Hero Text Side */}
-        <div className="relative z-20 w-full p-6 md:p-10 border-r-8 border-[#0284c7] text-right">
+        <div className="relative z-20 w-full p-6 md:p-10 border-r-8 border-[#5a5c3b] text-right">
           <h1 className='text-6xl sm:text-7xl lg:text-[8.5rem] font-black uppercase leading-[0.8] text-slate-950 tracking-tighter font-["Cairo"]'>
             تواصل
           </h1>
           <p className='text-xl lg:text-2xl text-slate-400 font-bold leading-relaxed mt-10 md:mt-14 tracking-tight font-["Cairo"]'>
-            دار المعمار للاستشارات والأعمال الهندسية في ليبيا.
+            شركة القمة للتصميم والاستشارات الهندسية في ليبيا.
           </p>
         </div>
 
@@ -129,11 +129,11 @@ export default function ContactHeroSection() {
                   <div className="pt-3 border-t border-slate-100 font-mono text-[10px] space-y-1 text-slate-500 text-right">
                     <p className="flex flex-row-reverse justify-between uppercase tracking-tighter">
                       <span>خط العرض:</span>
-                      <span className="text-[#0e7490] font-bold">32.102517 N</span>
+                      <span className="text-[#0e7490] font-bold">32.065042 N</span>
                     </p>
                     <p className="flex flex-row-reverse justify-between uppercase tracking-tighter">
                       <span>خط الطول:</span>
-                      <span className="text-[#0e7490] font-bold">20.101078 E</span>
+                      <span className="text-[#0e7490] font-bold">20.118551 E</span>
                     </p>
                   </div>
                 </div>

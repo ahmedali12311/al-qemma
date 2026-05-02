@@ -42,7 +42,7 @@ export default function HomeContactSection() {
           initial={{ opacity: 0, width: 0 }}
           whileInView={{ opacity: 1, width: "100px" }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="mb-6 h-px bg-[#0284c7]"
+          className="mb-6 h-px bg-[#5a5c3b]"
         />
 
         {/* العنوان الرئيسي */}
@@ -74,7 +74,7 @@ export default function HomeContactSection() {
         >
           <Link 
             to="/contact" 
-            className="group relative flex items-center gap-5 border border-[#050a15] bg-[#050a15] px-12 py-6 text-white transition-all duration-300 ease-in-out hover:bg-[#0284c7] hover:border-[#0284c7]"
+            className="group relative flex items-center gap-5 border border-[#050a15] bg-[#050a15] px-12 py-6 text-white transition-all duration-300 ease-in-out hover:bg-[#5a5c3b] hover:border-[#5a5c3b]"
           >
             <span className="font-['Cairo'] text-base font-bold tracking-[0.05em] uppercase">
               طلب استشارة هندسية

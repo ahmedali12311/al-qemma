@@ -3,44 +3,72 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { containerClass } from "../lib/ui";
 import GalleryHeroSection from "../components/sections/gallery/GalleryHeroSection";
-import SectionConnector from "../components/layout/SectionConnector";
 
-const rawImages = [
-  { id: "1486406146926-c627a92ad1ab", title: "ناطحة سحاب تجارية" },
-  { id: "1497366216548-37526070297c", title: "مساحات مكتبية ذكية" },
-  { id: "1487958449943-2429e8be8625", title: "تصميم معماري معاصر" }, // New for #3
-  { id: "1497366754035-f200968a6e72", title: "قاعة اجتماعات كبرى" },
-  { id: "1511818966892-d7d671e672a2", title: "واجهة مبنى تبسيطي" },
-  { id: "1518005020411-38b81210a7aa", title: "تفاصيل هندسية حديثة" }, // New for #6
-  { id: "1503387762-592dee58c460", title: "زوايا معمارية فنية" },
-  { id: "1492133969098-09ba49699f47", title: "تصميم داخلي فاخر" },
-  { id: "1504307651254-35680f3344d7", title: "إشراف هندسي وتنفيذ" }, // New for #9
-  { id: "1449156001437-3a16d1d8e900", title: "فيلا مودرن متكاملة" }, // New for #10
-  { id: "1554232456-8727aae3cfa9", title: "تغطية خارجية للمباني" }, // New for #11
-  { id: "1545558014-8692077e9b5c", title: "إبداع معماري بنغازي" },
+const layouts = [
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-1 md:row-span-1",
+  "md:col-span-1 md:row-span-2",
+  "md:col-span-1 md:row-span-1",
+  "md:col-span-2 md:row-span-1",
+  "md:col-span-1 md:row-span-1",
 ];
 
-const galleryImages = Array.from({ length: 48 }).map((_, i) => {
-  const base = rawImages[i % rawImages.length];
-  const layouts = [
-    "md:col-span-2 md:row-span-2", "md:col-span-1 md:row-span-1",
-    "md:col-span-1 md:row-span-2", "md:col-span-1 md:row-span-1",
-    "md:col-span-2 md:row-span-1", "md:col-span-1 md:row-span-1",
-  ];
-  return {
-    src: `https://images.unsplash.com/photo-${base.id}?q=80&w=1200&auto=format&fit=crop`,
-    title: base.title,
-    id: i,
-    span: layouts[i % layouts.length]
-  };
-});
+const categories = ["الكل", "تصميم مشروع فيلا سكنية", "فيلا هندسية بتصميم حديث"];
 
-const IMAGES_PER_PAGE = 12;
+const galleryImages = [
+  {
+    src: "/images/project/660387776_122281836662019327_9189526532439797575_n.jpg",
+    title: "تصميم مشروع فيلا سكنية - الهواري",
+    category: "تصميم مشروع فيلا سكنية",
+  },
+  {
+    src: "/images/project/660306541_122281836530019327_5073913178496558183_n.jpg",
+    title: "تفاصيل مشروع فيلا سكنية",
+    category: "تصميم مشروع فيلا سكنية",
+  },
+  {
+    src: "/images/project/658978146_122281836368019327_8591140431669529926_n.jpg",
+    title: "واجهة فيلا سكنية",
+    category: "تصميم مشروع فيلا سكنية",
+  },
+  {
+    src: "/images/project/658394892_122281836422019327_8136247648303619496_n.jpg",
+    title: "موقع مشروع فيلا سكنية",
+    category: "تصميم مشروع فيلا سكنية",
+  },
+  {
+    src: "/images/project/658169056_122281836308019327_1070392058801081620_n.jpg",
+    title: "تنفيذ مشروع فيلا سكنية",
+    category: "تصميم مشروع فيلا سكنية",
+  },
+  {
+    src: "/images/project/657745408_122281836482019327_5443369319405443580_n.jpg",
+    title: "فلل سكنية - القمة",
+    category: "تصميم مشروع فيلا سكنية",
+  },
+  {
+    src: "/images/project2/586744842_122265141374019327_5916673390387169092_n.jpg",
+    title: "فيلا هندسية بتصميم حديث",
+    category: "فيلا هندسية بتصميم حديث",
+  },
+  {
+    src: "/images/project2/586513687_122265141320019327_2518057596911254410_n.jpg",
+    title: "تفاصيل التصميم الحديث",
+    category: "فيلا هندسية بتصميم حديث",
+  },
+  {
+    src: "/images/project2/586200164_122265141212019327_3243405883845320566_n.jpg",
+    title: "فيلا مودرن - القمة",
+    category: "فيلا هندسية بتصميم حديث",
+  },
+];
+
+const IMAGES_PER_PAGE = 6;
 
 // Safe Image Component with fallback
 function SafeImage({ src, alt, className }) {
   const [error, setError] = useState(false);
-  const fallback = "/images/project-villa.jpg"; // Reliable local fallback
+  const fallback = "/images/project/660387776_122281836662019327_9189526532439797575_n.jpg";
 
   return (
     <img
@@ -53,17 +81,36 @@ function SafeImage({ src, alt, className }) {
 }
 
 export default function GalleryPage() {
+  const [activeCategory, setActiveCategory] = useState("الكل");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  const totalPages = Math.ceil(galleryImages.length / IMAGES_PER_PAGE);
+  // Filter images based on active category
+  const filteredImages = useMemo(() => {
+    const images = activeCategory === "الكل"
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === activeCategory);
+    
+    return images.map((image, i) => ({
+      ...image,
+      id: i,
+      originalId: galleryImages.findIndex(gi => gi.src === image.src),
+      span: layouts[i % layouts.length],
+    }));
+  }, [activeCategory]);
+
+  const totalPages = Math.ceil(filteredImages.length / IMAGES_PER_PAGE);
 
   const currentImages = useMemo(() => {
     const start = (currentPage - 1) * IMAGES_PER_PAGE;
-    return galleryImages.slice(start, start + IMAGES_PER_PAGE);
-  }, [currentPage]);
+    return filteredImages.slice(start, start + IMAGES_PER_PAGE);
+  }, [currentPage, filteredImages]);
+
+  useEffect(() => {
+    setCurrentPage(1); // Reset to page 1 when category changes
+  }, [activeCategory]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -86,8 +133,8 @@ export default function GalleryPage() {
     };
   }, [handleKeyDown, selectedIndex]);
 
-  const handleNext = () => setSelectedIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
-  const handlePrev = () => setSelectedIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  const handleNext = () => setSelectedIndex((prev) => (prev === filteredImages.length - 1 ? 0 : prev + 1));
+  const handlePrev = () => setSelectedIndex((prev) => (prev === 0 ? filteredImages.length - 1 : prev - 1));
 
   const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
   const handleTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
@@ -103,86 +150,116 @@ export default function GalleryPage() {
     <main className="grid w-full gap-0 py-0">
       <GalleryHeroSection />
 
-      <div className="relative bg-[#f1f5f9] pt-10 pb-8">
+      <div className="relative bg-[#f1f5f9] pt-16 pb-16">
         <div className={containerClass}>
 
-          {/* Premium Grid Gallery */}
-          <div className="grid grid-flow-dense grid-cols-1 md:grid-cols-4 md:auto-rows-[220px] gap-5">
-            {currentImages.map((img, i) => (
-              <motion.div
-                layout
-                key={img.id}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: (i % 6) * 0.1 }}
-                onClick={() => setSelectedIndex(img.id)}
-                className={`group relative cursor-pointer overflow-hidden rounded-[2rem] bg-white transition-all duration-700 hover:shadow-[0_20px_50px_rgba(2, 132, 199,0.12)] ${img.span}`}
+          {/* ── Filter Tabs ── */}
+          <div className="mb-16 flex flex-wrap items-center justify-center gap-4 px-4" dir="rtl">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`relative px-8 py-3.5 text-sm font-bold tracking-wide transition-all duration-500 rounded-full ${
+                  activeCategory === cat
+                    ? "text-white bg-[#5a5c3b] shadow-lg shadow-[#5a5c3b]/20"
+                    : "text-slate-500 bg-white hover:bg-slate-50 shadow-sm"
+                }`}
               >
-                <SafeImage
-                  src={img.src}
-                  alt={img.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#0f172a]/20 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100" />
-
-                <div className="absolute bottom-0 inset-x-0 p-8 translate-y-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#0ea5e9] mb-2 block">
-                    Project Detail
-                  </span>
-                  <h3 className="font-['Cairo'] text-xl font-bold text-white leading-snug">
-                    {img.title}
-                  </h3>
-                </div>
-
-                <div className="absolute top-6 right-6 h-8 w-8 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M15 3h6v6M10 14L21 3M9 21H3v-6M20 10l-11 11" /></svg>
-                </div>
-              </motion.div>
+                {cat}
+                {activeCategory === cat && (
+                  <motion.div
+                    layoutId="active-cat-bg"
+                    className="absolute inset-0 z-[-1] rounded-full bg-[#5a5c3b]"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </button>
             ))}
           </div>
+
+          {/* Premium Grid Gallery */}
+          <div className="grid grid-flow-dense grid-cols-1 md:grid-cols-4 md:auto-rows-[220px] gap-5 min-h-[400px]">
+            <AnimatePresence mode="popLayout">
+              {currentImages.map((img, i) => (
+                <motion.div
+                  layout
+                  key={img.src}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
+                  onClick={() => setSelectedIndex(img.id)}
+                  className={`group relative cursor-pointer overflow-hidden rounded-[2rem] bg-white transition-all duration-700 hover:shadow-[0_20px_50px_rgba(90, 92, 59,0.12)] ${img.span}`}
+                >
+                  <SafeImage
+                    src={img.src}
+                    alt={img.title}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  
+                  {/* Subtle Label on hover */}
+                  <div className="absolute bottom-6 left-6 right-6 z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                     <span className="inline-block px-4 py-2 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-bold text-slate-900 shadow-sm">
+                        {img.category}
+                     </span>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Empty State */}
+          {filteredImages.length === 0 && (
+            <div className="flex flex-col items-center justify-center py-24 text-slate-400">
+              <p className="text-lg font-['Cairo']">لا توجد صور في هذا القسم حالياً</p>
+            </div>
+          )}
 
         </div>
 
         {/* ── Pagination ── */}
-        <div className="mt-16 pb-8">
-          <div className={containerClass}>
-            <div className="flex items-center justify-center gap-8">
-              <button
-                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                disabled={currentPage === 1}
-                className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 transition-all hover:text-[#0284c7] disabled:opacity-20"
-              >
-                <span>السابق</span>
-                <span className="h-px w-6 bg-slate-300 transition-all group-hover:w-10 group-hover:bg-[#0284c7]" />
-              </button>
+        {totalPages > 1 && (
+          <div className="mt-16 pb-8">
+            <div className={containerClass}>
+              <div className="flex items-center justify-center gap-8">
+                <button
+                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                  disabled={currentPage === 1}
+                  className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 transition-all hover:text-[#5a5c3b] disabled:opacity-20"
+                >
+                  <span>السابق</span>
+                  <span className="h-px w-6 bg-slate-300 transition-all group-hover:w-10 group-hover:bg-[#5a5c3b]" />
+                </button>
 
-              <div className="flex items-center gap-4">
-                {Array.from({ length: totalPages }).map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentPage(i + 1)}
-                    className={`relative h-10 w-10 text-[12px] font-black transition-all ${currentPage === i + 1 ? "text-[#0284c7]" : "text-slate-300 hover:text-slate-600"
-                      }`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                    {currentPage === i + 1 && (
-                      <motion.span layoutId="page-dot" className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[#0284c7]" />
-                    )}
-                  </button>
-                ))}
+                <div className="flex items-center gap-4">
+                  {Array.from({ length: totalPages }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentPage(i + 1)}
+                      className={`relative h-10 w-10 text-[12px] font-black transition-all ${currentPage === i + 1 ? "text-[#5a5c3b]" : "text-slate-300 hover:text-slate-600"
+                        }`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                      {currentPage === i + 1 && (
+                        <motion.span layoutId="page-dot" className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[#5a5c3b]" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                  disabled={currentPage === totalPages}
+                  className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 transition-all hover:text-[#5a5c3b] disabled:opacity-20"
+                >
+                  <span className="h-px w-6 bg-slate-300 transition-all group-hover:w-10 group-hover:bg-[#5a5c3b]" />
+                  <span>التالي</span>
+                </button>
               </div>
-
-              <button
-                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                disabled={currentPage === totalPages}
-                className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 transition-all hover:text-[#0284c7] disabled:opacity-20"
-              >
-                <span className="h-px w-6 bg-slate-300 transition-all group-hover:w-10 group-hover:bg-[#0284c7]" />
-                <span>التالي</span>
-              </button>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
 
@@ -198,7 +275,7 @@ export default function GalleryPage() {
 
               <div className="absolute top-0 left-0 right-0 z-[100002] flex items-center justify-between p-8 pointer-events-none">
                 <span className="pointer-events-auto font-mono text-[10px] text-white/40 uppercase tracking-[0.5em]">
-                  {String(selectedIndex + 1).padStart(2, "0")} / {String(galleryImages.length).padStart(2, "0")}
+                  {String(selectedIndex + 1).padStart(2, "0")} / {String(filteredImages.length).padStart(2, "0")}
                 </span>
                 <button
                   onClick={() => setSelectedIndex(null)}
@@ -220,7 +297,8 @@ export default function GalleryPage() {
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className="flex flex-col items-center"
                     >
-                      <SafeImage src={galleryImages[selectedIndex].src} alt={galleryImages[selectedIndex].title} className="max-h-[85vh] w-auto max-w-full object-contain" />
+                      <SafeImage src={filteredImages[selectedIndex].src} alt={filteredImages[selectedIndex].title} className="max-h-[85vh] w-auto max-w-full object-contain" />
+                      <p className="mt-4 text-white text-sm font-['Cairo'] opacity-60">{filteredImages[selectedIndex].title}</p>
                     </motion.div>
                   </AnimatePresence>
                 </div>
@@ -228,11 +306,11 @@ export default function GalleryPage() {
 
               <div className="absolute bottom-12 left-0 right-0 z-[100002] flex items-center justify-center gap-3 pointer-events-none">
                 <div className="flex items-center gap-1.5 p-2 bg-white/5 backdrop-blur-md rounded-full pointer-events-auto max-w-[80vw] overflow-x-auto no-scrollbar">
-                  {galleryImages.map((_, i) => (
+                  {filteredImages.map((_, i) => (
                     <button
                       key={i}
                       onClick={(e) => { e.stopPropagation(); setSelectedIndex(i); }}
-                      className={`h-1 shrink-0 transition-all duration-500 rounded-full ${selectedIndex === i ? "w-8 bg-gradient-to-r from-[#0284c7] to-[#0ea5e9]" : "w-1 bg-white/10"
+                      className={`h-1 shrink-0 transition-all duration-500 rounded-full ${selectedIndex === i ? "w-8 bg-gradient-to-r from-[#5a5c3b] to-[#c8d44b]" : "w-1 bg-white/10"
                         }`}
                     />
                   ))}

@@ -51,12 +51,11 @@ export default function ContactContentSection() {
               href={method.href}
               target={method.external ? "_blank" : undefined}
               rel={method.external ? "noopener noreferrer" : undefined}
-              className="group relative bg-white border border-slate-100 overflow-hidden flex flex-col p-8 gap-8 transition-shadow duration-400 hover:shadow-[0_8px_40px_rgba(14,116,144,0.10)] hover:border-[#0e7490]/30"
+              className="group relative bg-white border border-slate-100 overflow-hidden flex flex-col items-center text-center p-8 gap-8 transition-shadow duration-400 hover:shadow-[0_8px_40px_rgba(14,116,144,0.10)] hover:border-[#0e7490]/30"
               style={{ minHeight: "260px" }}
             >
               {/* Animated bottom border — grows on hover */}
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0e7490] scale-x-0 group-hover:scale-x-100 origin-right transition-transform duration-500 ease-out" />
-
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0e7490] scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
 
               {/* Icon — stays teal always, grows on hover */}
               <div className="relative z-10 w-10 h-10 text-[#0e7490] transition-transform duration-300 group-hover:scale-110">
@@ -64,21 +63,20 @@ export default function ContactContentSection() {
               </div>
 
               {/* Content — text stays DARK always */}
-              <div className="relative z-10 flex-1 flex flex-col justify-end gap-3">
+              <div className="relative z-10 flex-1 flex flex-col justify-center gap-3">
                 <p className="text-[10px] font-mono tracking-[0.3em] uppercase text-slate-400">
                   {method.label}
                 </p>
                 <p
-                  className="text-slate-900 font-bold text-lg leading-snug break-all transition-colors duration-300 group-hover:text-[#0e7490]"
+                  className="text-slate-900 font-bold text-base leading-snug whitespace-nowrap transition-colors duration-300 group-hover:text-[#0e7490]"
                   dir={method.label === "الهاتف" || method.label === "البريد الإلكتروني" ? "ltr" : "rtl"}
-                  style={{ textAlign: "right" }}
                 >
                   {method.value}
                 </p>
               </div>
 
               {/* Arrow — appears on hover */}
-              <div className="relative z-10 flex justify-start">
+              <div className="relative z-10 flex justify-center">
                 <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 group-hover:border-[#0e7490] group-hover:bg-[#0e7490] group-hover:scale-105">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                     className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors duration-300 rotate-180">
@@ -96,11 +94,11 @@ export default function ContactContentSection() {
             <div className="w-2 h-2 rounded-full bg-[#0e7490] animate-pulse" />
             <div>
               <p className="text-[10px] font-mono tracking-widest uppercase text-slate-400 mb-0.5">المقر الرئيسي</p>
-              <p className="text-slate-800 font-bold font-['Cairo'] text-sm">بنغازي — شارع دبي</p>
+              <p className="text-slate-800 font-bold font-['Cairo'] text-sm">بنغازي — طريق النهر</p>
             </div>
           </div>
           <p className="text-[11px] font-mono tracking-wider text-slate-300">
-            دار المعمار للاستشارات والأعمال الهندسية
+            شركة القمة للتصميم والاستشارات الهندسية
           </p>
         </div>
 

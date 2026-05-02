@@ -7,7 +7,7 @@ const contactConnectors = [
   {
     from: "#ffffff",
     to: "#ffffff",
-    accent: "rgba(2, 132, 199, 0.3)",
+    accent: "rgba(90, 92, 59, 0.3)",
     heightClass: "h-16 md:h-20",
     variant: "blueprint",
   },
@@ -15,8 +15,8 @@ const contactConnectors = [
 
 export default function ContactPage() {
   usePageMeta(
-    "تواصل مع دار المعمار | استشارة ومتابعة مشروعك",
-    "تواصل مع شركة دار المعمار للاستشارات الهندسية والاستثمار العقاري عبر الهاتف أو البريد الإلكتروني."
+    "تواصل مع القمة | استشارة ومتابعة مشروعك",
+    "تواصل مع شركة القمة للاستشارات الهندسية والاستثمار العقاري عبر الهاتف أو البريد الإلكتروني."
   );
 
   return (

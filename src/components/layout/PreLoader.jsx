@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import LogoSvg from '../sections/gallery/LogoSvg';
 
 export default function PreLoader() {
   return (
@@ -10,9 +11,9 @@ export default function PreLoader() {
         scaleY: 0,
         transformOrigin: "bottom",
         transition: { 
-          duration: 0.9,
+          duration: 1.2,
           ease: [0.76, 0, 0.24, 1],
-          delay: 0.1
+          delay: 2.5
         } 
       }}
       style={{ willChange: "transform" }}
@@ -22,28 +23,17 @@ export default function PreLoader() {
         animate={{ opacity: 1, y: 0 }}
         className="flex w-full max-w-[24rem] flex-col items-center text-center"
       >
-        {/* You can place Dar Al M3mar Logo here */}
-        <div className="text-white text-3xl font-['Cairo'] font-black tracking-widest uppercase">
-          دار المعمار
-        </div>
+        {/* Dar Al M3mar Logo Image */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="w-48 h-48 md:w-56 md:h-56 mb-4"
+        >
+          <LogoSvg />
+        </motion.div>
 
-        <div className="mt-16 flex w-full max-w-72 flex-col items-center gap-4 sm:mt-20 md:mt-24">
-          <span className="text-center text-[0.72rem] font-semibold uppercase tracking-[0.55em] text-[#0284c7] sm:text-sm sm:tracking-[0.8em]">
-            Loading
-          </span>
-          <div className="relative h-[1px] w-full overflow-hidden bg-[#0284c7]/10">
-            <motion.div 
-              className="absolute h-full bg-[#0284c7] w-full"
-              initial={{ x: '-100%' }}
-              animate={{ x: '100%' }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 1.5, 
-                ease: "easeInOut" 
-              }}
-            />
-          </div>
-        </div>
+        {/* تمت إزالة شريط التحميل التقليدي والتركيز على رسم الشعار */}
       </motion.div>
     </motion.div>
   );

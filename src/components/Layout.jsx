@@ -14,7 +14,7 @@ export default function Layout({ children }) {
       ></div>
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed -left-24 top-24 -z-20 h-64 w-64 rounded-full bg-[#0ea5e9]/15 blur-3xl"
+        className="pointer-events-none fixed -left-24 top-24 -z-20 h-64 w-64 rounded-full bg-[#c8d44b]/15 blur-3xl"
       ></div>
       <div
         aria-hidden="true"
@@ -29,7 +29,7 @@ export default function Layout({ children }) {
           <SectionConnector
             from={location.pathname === "/gallery" ? "#f1f5f9" : "#ffffff"}
             to="#ffffff"
-            accent="rgba(2, 132, 199, 0.3)"
+            accent="rgba(90, 92, 59, 0.3)"
             heightClass="h-24 md:h-32"
           />
         </div>

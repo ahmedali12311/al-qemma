@@ -13,9 +13,9 @@ export default function ProjectsProcessSection() {
 
   // Color palette for the gradient progression
   const stepColors = [
-    { from: "#38bdf8", to: "#0284c7" }, 
-    { from: "#0ea5e9", to: "#0284c7" }, 
-    { from: "#0284c7", to: "#0369a1" }, 
+    { from: "#38bdf8", to: "#5a5c3b" }, 
+    { from: "#c8d44b", to: "#5a5c3b" }, 
+    { from: "#5a5c3b", to: "#0369a1" }, 
     { from: "#0f172a", to: "#020617" }, 
   ];
 
@@ -46,9 +46,9 @@ export default function ProjectsProcessSection() {
             <motion.span 
               animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="h-1.5 w-1.5 rounded-full bg-[#0284c7]" 
+              className="h-1.5 w-1.5 rounded-full bg-[#5a5c3b]" 
             />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#0284c7]">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#5a5c3b]">
               منهجية العمل الاحترافية
             </span>
           </motion.div>
@@ -58,13 +58,13 @@ export default function ProjectsProcessSection() {
             transition={{ duration: 0.8 }}
             className="font-['Cairo'] text-4xl font-black leading-tight text-slate-900 md:text-6xl mb-6"
           >
-            مسارنا نحو <span className="text-[#0284c7]">الكمال</span> المعماري
+            مسارنا نحو <span className="text-[#5a5c3b]">الكمال</span> المعماري
           </motion.h2>
           <motion.div 
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="h-1.5 bg-gradient-to-r from-transparent via-[#0284c7] to-transparent mx-auto rounded-full" 
+            className="h-1.5 bg-gradient-to-r from-transparent via-[#5a5c3b] to-transparent mx-auto rounded-full" 
           />
         </div>
 
@@ -87,7 +87,7 @@ export default function ProjectsProcessSection() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                  className="relative z-10 h-full p-12 rounded-[3.5rem] bg-white border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(2, 132, 199,0.15)] group-hover:-translate-y-6 flex flex-col items-center text-center"
+                  className="relative z-10 h-full p-12 rounded-[3.5rem] bg-white border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] transition-all duration-700 group-hover:shadow-[0_40px_80px_rgba(90, 92, 59,0.15)] group-hover:-translate-y-6 flex flex-col items-center text-center"
                 >
                   
                   {/* Interactive Step Number */}
@@ -108,11 +108,11 @@ export default function ProjectsProcessSection() {
                     <motion.div 
                       animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.2, 1] }}
                       transition={{ duration: 3, repeat: Infinity }}
-                      className="absolute -inset-2 rounded-[2.5rem] bg-[#0284c7]/5 blur-lg -z-10" 
+                      className="absolute -inset-2 rounded-[2.5rem] bg-[#5a5c3b]/5 blur-lg -z-10" 
                     />
                   </motion.div>
 
-                  <h3 className="font-['Cairo'] text-2xl font-bold text-slate-900 mb-5 group-hover:text-[#0284c7] transition-colors duration-300">
+                  <h3 className="font-['Cairo'] text-2xl font-bold text-slate-900 mb-5 group-hover:text-[#5a5c3b] transition-colors duration-300">
                     {step.title}
                   </h3>
                   
@@ -161,8 +161,8 @@ export default function ProjectsProcessSection() {
               />
 
               {/* Glowing Accent Orbs */}
-              <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#0284c7] rounded-full mix-blend-screen filter blur-[100px] opacity-20 transition-opacity duration-700 group-hover:opacity-40" />
-              <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#0ea5e9] rounded-full mix-blend-screen filter blur-[100px] opacity-10 transition-opacity duration-700 group-hover:opacity-30" />
+              <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#5a5c3b] rounded-full mix-blend-screen filter blur-[100px] opacity-20 transition-opacity duration-700 group-hover:opacity-40" />
+              <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#c8d44b] rounded-full mix-blend-screen filter blur-[100px] opacity-10 transition-opacity duration-700 group-hover:opacity-30" />
 
               {/* Animated Light Sweep */}
               <motion.div
@@ -175,15 +175,15 @@ export default function ProjectsProcessSection() {
 
            <div className="relative z-10 p-10 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-right">
               <div className="max-w-2xl relative">
-                <div className="absolute -right-6 top-0 w-1.5 h-20 bg-gradient-to-b from-[#0ea5e9] to-transparent rounded-full hidden md:block" />
-                <span className="inline-block py-1.5 px-4 rounded-full bg-[#0284c7]/20 border border-[#0284c7]/30 text-[#0ea5e9] text-[10px] font-black uppercase tracking-[0.4em] mb-6">
+                <div className="absolute -right-6 top-0 w-1.5 h-20 bg-gradient-to-b from-[#c8d44b] to-transparent rounded-full hidden md:block" />
+                <span className="inline-block py-1.5 px-4 rounded-full bg-[#5a5c3b]/20 border border-[#5a5c3b]/30 text-[#c8d44b] text-[10px] font-black uppercase tracking-[0.4em] mb-6">
                   ابدأ مشروعك الآن
                 </span>
                 <motion.h4 
                   className="font-['Cairo'] text-4xl font-black text-white mb-6 md:text-5xl leading-tight"
                 >
                   مستعد لنقل فكرتك <br/>
-                  إلى <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#0284c7] to-[#0ea5e9]">المرحلة التالية؟</span>
+                  إلى <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#5a5c3b] to-[#c8d44b]">المرحلة التالية؟</span>
                 </motion.h4>
                 <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-xl">
                   نحن نؤمن بأن كل مشروع هو فرصة لخلق شيء استثنائي. دعنا نحوّل رؤيتك إلى واقع ملموس يتجاوز التوقعات.
@@ -197,10 +197,10 @@ export default function ProjectsProcessSection() {
               >
                 <Link
                   to="/contact"
-                  className="group relative inline-flex items-center gap-6 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#0284c7]/50 backdrop-blur-xl px-10 py-6 rounded-2xl text-white font-bold text-lg shadow-[0_10px_30px_rgba(0,0,0,0.2)] transition-all overflow-hidden"
+                  className="group relative inline-flex items-center gap-6 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#5a5c3b]/50 backdrop-blur-xl px-10 py-6 rounded-2xl text-white font-bold text-lg shadow-[0_10px_30px_rgba(0,0,0,0.2)] transition-all overflow-hidden"
                 >
                   <span className="font-['Cairo'] relative z-10 tracking-wide">طلب استشارة مجانية</span>
-                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#0284c7] to-[#0ea5e9] shadow-[0_0_20px_rgba(2,132,199,0.5)] transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#5a5c3b] to-[#c8d44b] shadow-[0_0_20px_rgba(2,132,199,0.5)] transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                   </div>
                 </Link>

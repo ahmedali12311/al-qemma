@@ -32,8 +32,7 @@ function CloudMark({
 
 export default function HomeHeroSection() {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const overlayOffsetClass =
-    "scale-[1.08] -translate-y-[1.5vh] sm:scale-[1.08] sm:-translate-y-[1.5vh] md:scale-[1.06] md:-translate-y-[1.25vh] lg:scale-[1.05] lg:-translate-y-[1vh] xl:scale-[1.04] xl:-translate-y-[0.75vh] 2xl:scale-[1.03] 2xl:-translate-y-[0.5vh]";
+  const overlayOffsetClass = "scale-[1.08] -translate-y-[-1.3vh] sm:scale-[1.08] sm:-translate-y-[-1.10vh] md:scale-[1.06] md:-translate-y-[-1vh] lg:scale-[1.04] lg:-translate-y-[-1.1vh] xl:scale-[1.04] xl:-translate-y-[-1vh] 2xl:scale-[1.03] 2xl:-translate-y-[-0.9vh]";
 
   const workflowSteps = [
     { id: "01", title: "التصميم المعماري والمخططات التنفيذية" },
@@ -99,11 +98,11 @@ export default function HomeHeroSection() {
                 textShadow: "0 10px 24px rgba(255,255,255,0.24)",
               }}
             >
-              دار المعمار
+              القمة
             </span>
             {/* طبقة النص النص الأساسية */}
             <h1 className="relative text-center text-[clamp(4.75rem,15vw,11rem)] font-black leading-[0.88] text-black" style={{ textShadow: "0 12px 24px rgba(255,255,255,0.12)" }}>
-              دار المعمار
+              القمة
             </h1>
           </div>
         </div>
@@ -115,11 +114,11 @@ export default function HomeHeroSection() {
           <div className={`flex flex-col lg:flex-row justify-between items-end gap-6 sm:gap-10 lg:gap-12 transition-all duration-700 delay-100 ${isImageLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
 
             {/* المحتوى الرئيسي للموبايل والويب - مضمون وجوده على اليمين دائماً */}
-            <div className="w-full flex justify-start"> 
+            <div className="w-full flex justify-start">
               <div className="max-w-2xl text-right">
                 <h2 className="font-['Cairo'] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.25] drop-shadow-lg">
                   نصيغ الفراغ.. <br />
-                  <span className="text-[#0ea5e9]">لنمنحك قيمة تدوم.</span>
+                  <span className="text-[#c8d44b]">لنمنحك قيمة تدوم.</span>
                 </h2>
                 <p className="mt-3 sm:mt-5 text-sm sm:text-base lg:text-lg font-medium leading-relaxed text-white/85 drop-shadow-md max-w-sm sm:max-w-lg lg:max-w-2xl ml-auto">
                   في بنغازي، نحن لا نبني جدراناً فقط؛ نحن نصمم استثمارات عقارية مستدامة ونشرف على أدق تفاصيل التنفيذ لنضمن لك جودة تليق بتطلعاتك.
@@ -130,7 +129,7 @@ export default function HomeHeroSection() {
             {/* جهة اليسار: مسار العمل — يظهر فقط في الويب ومتموضع لليسار */}
             <div className="hidden lg:block absolute left-4 bottom-0 max-w-xs text-right flex-shrink-0">
               <div className="mb-3">
-                <span className="text-[#0ea5e9] font-bold tracking-widest uppercase text-xs sm:text-sm drop-shadow">مسار العمل</span>
+                <span className="text-[#c8d44b] font-bold tracking-widest uppercase text-xs sm:text-sm drop-shadow">مسار العمل</span>
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mt-1 drop-shadow-lg">من الفكرة إلى الواقع</h3>
               </div>
               <p className="text-white/70 text-xs sm:text-sm mb-4 leading-relaxed drop-shadow">
@@ -140,7 +139,7 @@ export default function HomeHeroSection() {
                 {workflowSteps.map((step) => (
                   <div key={step.id} className="flex items-center justify-end gap-3 group">
                     <span className="text-white/80 text-xs sm:text-sm font-medium group-hover:text-white transition-colors drop-shadow">{step.title}</span>
-                    <span className="text-[#0ea5e9] font-black text-base sm:text-lg border-r border-[#0ea5e9]/30 pr-3 drop-shadow">{step.id}</span>
+                    <span className="text-[#c8d44b] font-black text-base sm:text-lg border-r border-[#c8d44b]/30 pr-3 drop-shadow">{step.id}</span>
                   </div>
                 ))}
               </div>

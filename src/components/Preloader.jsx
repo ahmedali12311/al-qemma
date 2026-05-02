@@ -4,11 +4,10 @@ import LogoSvg from "./sections/gallery/LogoSvg";
 
 export default function Preloader({ onComplete }) {
   useEffect(() => {
-    // The logo drawing takes 3.5s + 1.5s fill delay. 
-    // We'll let it finish drawing and filling, then dismiss.
+    // نمنح وقت كافٍ لاكتمال حركات الـ SVG قبل إخفاء الـ preloader
     const timer = setTimeout(() => {
       onComplete();
-    }, 4500);
+    }, 4500); // زدنا الوقت قليلاً لتظهر كل تفاصيل اللوجو
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -20,22 +19,17 @@ export default function Preloader({ onComplete }) {
       exit={{ y: "-100%" }}
       transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
     >
-      <div className="h-[220px] w-[220px] sm:h-[280px] sm:w-[280px]">
-        <LogoSvg />
+      <div className="w-[320px] h-[320px] sm:w-[450px] sm:h-[450px]">
+        <LogoSvg className="w-full h-full" />
       </div>
       
+      {/* الخط الصغير السفلي لمسة فنية إضافية */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 3.5, duration: 0.8 }}
-        className="mt-8 flex items-center gap-4"
-      >
-        <span className="h-px w-8 bg-[#111111]" />
-        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#111111]">
-          دار المعمار
-        </span>
-        <span className="h-px w-8 bg-[#111111]" />
-      </motion.div>
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ delay: 3, duration: 1.5 }}
+        className="mt-4 h-px w-32 bg-[#5a5c3b]/30 origin-center"
+      />
     </motion.div>
   );
 }
