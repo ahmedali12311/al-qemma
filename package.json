@@ -1,8 +1,16 @@
 {
-  "name": "dar-alm3mar",
+  "name": "al-qemma",
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedali12311/al-qemma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ahmedali12311/al-qemma/issues"
+  },
+  "homepage": "https://github.com/ahmedali12311/al-qemma#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
